@@ -1,7 +1,6 @@
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import { Box, Typography } from '@mui/material'
 
-export default function StatsBlock() {
+export function StatsBlock() {
   return (
     <Box>
       <Typography>Общие число сотредников: </Typography>

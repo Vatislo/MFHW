@@ -1,10 +1,7 @@
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
-import TableCell from '@mui/material/TableCell'
-import TableRow from '@mui/material/TableRow'
+import { Button, Stack, TableCell, TableRow } from '@mui/material'
 import { FaTrash, FaCookie } from 'react-icons/fa'
 
-export default function EmployeeRow({ employee }) {
+export function EmployeeRow({ employee }) {
   return (
     <TableRow>
       <TableCell width="50%"><Button>{employee.name}</Button></TableCell>

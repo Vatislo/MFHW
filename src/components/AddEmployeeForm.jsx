@@ -1,10 +1,6 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 
-export default function AddEmployeeForm() {
+export function AddEmployeeForm() {
   return (
     <Box>
       <Typography>Добавить нового сотрудника</Typography>
