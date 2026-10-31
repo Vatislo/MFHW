@@ -1,6 +1,4 @@
-import { employees } from '../data/employees'
-
-export function Heading() {
+export function Heading({ employees }) {
     return (
         <div className="logical-block">
             <h1>Учёт сотрудников компании №<span></span></h1>
