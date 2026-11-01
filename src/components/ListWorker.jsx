@@ -52,14 +52,7 @@ export function ListWorker({ employees, onRemove, onToggleBonus, onTogglePromoti
                                 <FaTrash />
                             </Button>
                             {item.promotion && (
-                                <Button
-                                    variant="ghost"
-                                    size="icon-sm"
-                                    aria-label={`Повышен: ${item.name}`}
-                                    onClick={() => onTogglePromotion(item.id)}
-                                >
-                                    <FaStar className="fill-yellow-400 text-yellow-400" />
-                                </Button>
+                                <FaStar className="fill-yellow-400 text-yellow-400" />
                             )}
                         </span>
                     </li>
