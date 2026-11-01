@@ -1,6 +1,5 @@
 import { FaTrash, FaCookie, FaStar } from 'react-icons/fa'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 export function ListWorker({ employees, onRemove, onToggleBonus, onTogglePromotion }) {
     if (employees.length === 0) {
@@ -37,10 +36,8 @@ export function ListWorker({ employees, onRemove, onToggleBonus, onTogglePromoti
                                 onClick={() => onToggleBonus(item.id)}
                             >
                                 <FaCookie
-                                    className={cn(
-                                        "text-muted-foreground",
-                                        item.bonus && "fill-amber-700 text-amber-700"
-                                    )}
+                                    className={`text-muted-foreground ${item.bonus ? "fill-orange-500 text-orange-500" : ""
+                                        }`}
                                 />
                             </Button>
                             <Button
