@@ -36,7 +36,11 @@ export function ListWorker({ employees, onRemove, onToggleBonus, onTogglePromoti
                                 onClick={() => onToggleBonus(item.id)}
                             >
                                 <FaCookie
-                                    className='text-orange-500'
+                                    className={
+                                        item.bonus
+                                            ? "fill-orange-500 text-orange-500"
+                                            : "black"
+                                    }
                                 />
                             </Button>
                             <Button
