@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heading, SearchWorker, AddWorker } from './components';
+import { Heading, SearchWorker, AddWorkerRHF } from './components';
 import { employees as initialEmployees } from './data/employees';
 
 export function App() {
@@ -35,7 +35,7 @@ export function App() {
         onTogglePromotion={handleTogglePromotion}
 
       />
-      <AddWorker onAdd={handleAdd} />
+      <AddWorkerRHF newUser={handleAdd} />
     </div>
   );
 }
