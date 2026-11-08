@@ -1,8 +1,17 @@
 import { useForm } from 'react-hook-form';
 import './style.css'
 
+const ErrorMessage = ({ error }) => {
+  if (!error) return null;
+  return (
+    <p style={{ color: 'red', margin: '4px 0 8px 0', fontSize: '13px' }}>
+      {error.message}
+    </p>
+  );
+};
+
 export function Appeska() {
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState: {errors} } = useForm({
     mode: 'onChange',
     defaultValues: {
       gender: "Выбрать пол"
@@ -13,67 +22,73 @@ export function Appeska() {
     console.log(data);
   };
 
-  // я уверен что както можно эти 6 констант для ошибок оптимизировать, но это не суть занятия
-  const emailError = formState.errors.email?.message;
-  const firstNameError = formState.errors.firstName?.message;
-  const secondNameError = formState.errors.secondName?.message;
-  const passwordError = formState.errors.password?.message;
-  const phoneError = formState.errors.phone?.message;
-  const genderError = formState.errors.gender?.message;
-
   return (
-    <form className='LRHF-form' onSubmit={handleSubmit(onSubmit)}>
+    <form className='superForm' onSubmit={handleSubmit(onSubmit)}>
+      
+      <input 
+        placeholder="Первое имя" 
+        {...register('firstName', { required: "Обязательно для заполнения" })} 
+      />
+      <ErrorMessage error={errors.firstName} />
 
-      <input className='LRHF-input' placeholder='Первое имя' {...register('firstName', {
-        required: "обязательно я для заполнения",
-      })} />
-      {firstNameError && <p>{firstNameError}</p>}
+      <input 
+        placeholder="Второе имя" 
+        {...register('secondName', { required: "Обязательно для заполнения" })} 
+      />
+      <ErrorMessage error={errors.secondName} />
 
-      <input className='LRHF-input' placeholder='Имя мати' {...register('secondName', {
-        required: "обязательно я для заполнения",
-      })} />
-      {secondNameError && <p>{secondNameError}</p>}
-
-      <input className='LRHF-input' placeholder='Мыло'
+      <input 
+        placeholder="Мыло" 
+        type="email" 
         {...register('email', {
-          required: 'обязательно я для заполнения',
+          required: "Обязательно для заполнения",
           pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: 'Неправельный синтаксис',
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: 'Неправильный синтаксис email',
           }
         })}
       />
-      {emailError && <p>{emailError}</p>}
+      <ErrorMessage error={errors.email} />
 
-      <input className='LRHF-input' placeholder='Пассворд' {...register('password', {
-        required: "обязательно я для заполнения",
-        pattern: {
-          value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-          message: 'Минимум 8 символов, нужны буквы и цифры'
-        }
-      })} />
-      {passwordError && <p>{passwordError}</p>}
+      <input 
+        placeholder="Пассворд" 
+        type="password"
+        {...register('password', {
+          required: "Обязательно для заполнения",
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            message: 'Минимум 8 символов, нужны буквы и цифры'
+          }
+        })} 
+      />
+      <ErrorMessage error={errors.password} />
 
-      <input className='LRHF-input' placeholder='Мобила' {...register('phone', {
-        required: "обязательно я для заполнения",
-        pattern: {
-          value: /^(\+7|7|8)?[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/,
-          message: 'Неправельный синтаксис'
-        }
-      })} />
-      {phoneError && <p>{phoneError}</p>}
+      <input 
+        placeholder="Мобила" 
+        type="tel"
+        {...register('phone', {
+          required: "Обязательно для заполнения",
+          pattern: {
+            value: /^(\+7|7|8)?[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/,
+            message: 'Неправильный синтаксис телефона'
+          }
+        })} 
+      />
+      <ErrorMessage error={errors.phone} />
 
-      <select className='LRHF-input' {...register('gender', {
-        validate: (value) => value === 'Мужской' || value === 'Женский' || 'Выберите из 2'
+      <select {...register('gender', {
+        validate: (value) => value !== "Выбрать пол" || "Выберите корректный пол"
       })}>
-        <option value="Выбрать пол" disabled>Выбрать отсутствие или не отсутствие</option>
+        <option value="Выбрать пол" disabled>Выбрать пол</option>
         <option value="Мужской">Мужской</option>
         <option value="Женский">Женский</option>
       </select>
+      <ErrorMessage error={errors.gender} />
 
-      {genderError && <p>{genderError}</p>}
-
-      <button className='LRHF-button' type="submit">0_0</button>
+      <button type="submit" style={{ marginTop: '12px', padding: '8px' }}>
+        Отправить 0_0
+      </button>
+      
     </form>
   );
 }

@@ -1,42 +1,37 @@
-.LRHF-form {
-  max-width: 400px;
+.superForm {
+  max-width: 300px;
   margin: 40px auto;
   padding: 24px;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-family: system-ui, -apple-system, sans-serif;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Стили для всех инпутов и селектов */
-.LRHF-form * {
+.superForm * {
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 4px;
   border: 1px solid #cccccc;
   border-radius: 6px;
   font-size: 15px;
-  box-sizing: border-box; /* Чтобы padding не ломал ширину */
+  box-sizing: border-box; 
   transition: border-color 0.2s;
 }
 
-.LRHF-form *:focus {
+.superForm *:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-/* Стили для текста ошибки */
-.LRHF-form p {
+.superForm p {
   color: #d32f2f;
   font-size: 13px;
-  margin: 0 0 16px 0; /* Отступ снизу до следующего поля */
+  margin: 0 0 16px 0; 
   font-weight: 500;
 }
 
-/* Кнопка отправки */
-.LRHF-button {
+.superForm button {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
@@ -50,10 +45,10 @@
   transition: background-color 0.2s;
 }
 
-.LRHF-button:hover {
+.superForm button:hover {
   background-color: #0056b3;
 }
 
-.LRHF-button:active {
+.superForm button:active {
   transform: translateY(1px);
 }

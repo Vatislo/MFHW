@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heading, SearchWorker, AddWorkerRHF } from './components';
+import { Heading, SearchWorker, AddWorker } from './components';
 import { Appeska } from './lessonReactHookForm/main';
 import { employees as initialEmployees } from './data/employees';
 
@@ -36,7 +36,7 @@ export function App() {
         onTogglePromotion={handleTogglePromotion}
 
       />
-      <AddWorkerRHF newUser={handleAdd} />
+      <AddWorker newUser={handleAdd} />
       <Appeska/>
     </div>
   );

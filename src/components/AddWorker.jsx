@@ -1,45 +1,56 @@
-import { useRef } from "react"
 import { useForm } from "react-hook-form"
+import { ErrorMessage } from "@hookform/error-message"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
-export function AddWorker({ onAdd }) {
-    const nameRef = useRef("")
-    const salaryRef = useRef("")
+export function AddWorker({ newUser }) {
 
-    function handleSubmit() {
-        const name = nameRef.current.value
-        const salary = salaryRef.current.value
-        if (!name.trim() || !salary) return
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: 'onChange',
+    });
 
-        const newEmp = {
+    const onSubmit = (data) => {
+        newUser({
             id: crypto.randomUUID(),
-            name: name.trim(),
-            salary: Number(salary),
+            name: data.userName,
+            salary: data.userSalary,
             bonus: false,
-            promotion: false,
-        }
-
-        onAdd(newEmp)
-
-        nameRef.current.value = ""
-        salaryRef.current.value = ""
-    }
+            promotion: false
+        });
+    };
 
     return (
-        <div className="logical-block">
+        <form onSubmit={handleSubmit(onSubmit)} className="logical-block">
             <h2 className="mb-2.5">Добавить нового сотрудника</h2>
-            <div className="grid grid-cols-[2fr_2fr_1fr] gap-2">
-                <Input
-                    placeholder="Как его зовут"
-                    ref={nameRef}
-                />
-                <Input
-                    placeholder="ЗП в долларах"
-                    ref={salaryRef}
-                />
-                <Button onClick={handleSubmit}>Добавить</Button>
+            <div className="grid grid-cols-[2fr_2fr_1fr] gap-5">
+                <div>
+                    <Input {...register('userName', {
+                        required: "Обязательно для заполнения",
+                        pattern: {
+                            value: /^[a-zA-Z]+$/,
+                            message: "Латинские буквы"
+                        }
+                    })}
+                        placeholder="Как его зовут"
+                    />
+                    <ErrorMessage errors={errors} name="userName" as="p" className="text-red-500 " />
+                </div>
+
+                <div>
+                    <Input {...register('userSalary', {
+                        required: "Обязательно для заполнения",
+                        pattern: {
+                            value: /^\d+$/,
+                            message: "Цифры"
+                        }
+                    })}
+                        placeholder="ЗП в долларах"
+                    />
+                    <ErrorMessage errors={errors} name="userSalary" as="p" className="text-red-500" />
+                </div>
+
+                <Button type="submit">Добавить</Button>
             </div>
-        </div>
+        </form>
     )
 }
