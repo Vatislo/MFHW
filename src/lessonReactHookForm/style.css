@@ -1,4 +1,4 @@
-form {
+.LRHF-form {
   max-width: 400px;
   margin: 40px auto;
   padding: 24px;
@@ -10,7 +10,7 @@ form {
 }
 
 /* Стили для всех инпутов и селектов */
-form * {
+.LRHF-form * {
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 4px;
@@ -21,14 +21,14 @@ form * {
   transition: border-color 0.2s;
 }
 
-form *:focus {
+.LRHF-form *:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 /* Стили для текста ошибки */
-p {
+.LRHF-form p {
   color: #d32f2f;
   font-size: 13px;
   margin: 0 0 16px 0; /* Отступ снизу до следующего поля */
@@ -36,7 +36,7 @@ p {
 }
 
 /* Кнопка отправки */
-button {
+.LRHF-button {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
@@ -50,10 +50,10 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
+.LRHF-button:hover {
   background-color: #0056b3;
 }
 
-button:active {
+.LRHF-button:active {
   transform: translateY(1px);
 }

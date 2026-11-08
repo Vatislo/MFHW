@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import './style.css'
 
-export function App() {
+export function Appeska() {
   const { register, handleSubmit, formState } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -22,19 +22,19 @@ export function App() {
   const genderError = formState.errors.gender?.message;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className='LRHF-form' onSubmit={handleSubmit(onSubmit)}>
 
-      <input placeholder='Первое имя' {...register('firstName', {
+      <input className='LRHF-input' placeholder='Первое имя' {...register('firstName', {
         required: "обязательно я для заполнения",
       })} />
       {firstNameError && <p>{firstNameError}</p>}
 
-      <input placeholder='Имя мати' {...register('secondName', {
+      <input className='LRHF-input' placeholder='Имя мати' {...register('secondName', {
         required: "обязательно я для заполнения",
       })} />
       {secondNameError && <p>{secondNameError}</p>}
 
-      <input placeholder='Мыло'
+      <input className='LRHF-input' placeholder='Мыло'
         {...register('email', {
           required: 'обязательно я для заполнения',
           pattern: {
@@ -45,7 +45,7 @@ export function App() {
       />
       {emailError && <p>{emailError}</p>}
 
-      <input placeholder='Пассворд' {...register('password', {
+      <input className='LRHF-input' placeholder='Пассворд' {...register('password', {
         required: "обязательно я для заполнения",
         pattern: {
           value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
@@ -54,7 +54,7 @@ export function App() {
       })} />
       {passwordError && <p>{passwordError}</p>}
 
-      <input placeholder='Мобила' {...register('phone', {
+      <input className='LRHF-input' placeholder='Мобила' {...register('phone', {
         required: "обязательно я для заполнения",
         pattern: {
           value: /^(\+7|7|8)?[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/,
@@ -63,7 +63,7 @@ export function App() {
       })} />
       {phoneError && <p>{phoneError}</p>}
 
-      <select {...register('gender', {
+      <select className='LRHF-input' {...register('gender', {
         validate: (value) => value === 'Мужской' || value === 'Женский' || 'Выберите из 2'
       })}>
         <option value="Выбрать пол" disabled>Выбрать отсутствие или не отсутствие</option>
@@ -73,7 +73,7 @@ export function App() {
 
       {genderError && <p>{genderError}</p>}
 
-      <button type="submit">0_0</button>
+      <button className='LRHF-button' type="submit">0_0</button>
     </form>
   );
 }
