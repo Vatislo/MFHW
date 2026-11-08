@@ -1,14 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { ErrorMessage } from "@hookform/error-message"
 import './style.css'
-
-const ErrorMessage = ({ error }) => {
-  if (!error) return null;
-  return (
-    <p style={{ color: 'red', margin: '4px 0 8px 0', fontSize: '13px' }}>
-      {error.message}
-    </p>
-  );
-};
 
 export function Appeska() {
   const { register, handleSubmit, formState: {errors} } = useForm({
@@ -29,13 +21,13 @@ export function Appeska() {
         placeholder="Первое имя" 
         {...register('firstName', { required: "Обязательно для заполнения" })} 
       />
-      <ErrorMessage error={errors.firstName} />
+      <ErrorMessage errors={errors} name='firstName' as="p"/>
 
       <input 
         placeholder="Второе имя" 
         {...register('secondName', { required: "Обязательно для заполнения" })} 
       />
-      <ErrorMessage error={errors.secondName} />
+      <ErrorMessage errors={errors} name='secondName' as="p"/>
 
       <input 
         placeholder="Мыло" 
@@ -48,7 +40,7 @@ export function Appeska() {
           }
         })}
       />
-      <ErrorMessage error={errors.email} />
+      <ErrorMessage errors={errors} name='email' as="p"/>
 
       <input 
         placeholder="Пассворд" 
@@ -61,7 +53,7 @@ export function Appeska() {
           }
         })} 
       />
-      <ErrorMessage error={errors.password} />
+      <ErrorMessage errors={errors} name='password' as="p"/>
 
       <input 
         placeholder="Мобила" 
@@ -74,7 +66,7 @@ export function Appeska() {
           }
         })} 
       />
-      <ErrorMessage error={errors.phone} />
+      <ErrorMessage errors={errors} name='phone' as="p"/>
 
       <select {...register('gender', {
         validate: (value) => value !== "Выбрать пол" || "Выберите корректный пол"
@@ -83,7 +75,7 @@ export function Appeska() {
         <option value="Мужской">Мужской</option>
         <option value="Женский">Женский</option>
       </select>
-      <ErrorMessage error={errors.gender} />
+      <ErrorMessage errors={errors} name='gender' as="p"/>
 
       <button type="submit" style={{ marginTop: '12px', padding: '8px' }}>
         Отправить 0_0
