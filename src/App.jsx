@@ -27,7 +27,7 @@ export function App() {
   }
 
   return (
-    <div className="max-w-[600px] mx-auto flex flex-col gap-5 p-10">
+    <div className="max-w-[600px] mx-auto flex flex-col gap-5 p-2">
       <Heading employees={employees} />
       <SearchWorker
         employees={employees}

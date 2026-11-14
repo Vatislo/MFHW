@@ -21,7 +21,7 @@ export function SearchWorker({ employees, onRemove, onToggleBonus, onTogglePromo
                     value={query}
                     onValueChange={setQuery}
                 />
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col sm:flex-row">
                     <Button onClick={() => setFilter("all")}>Все сотрудники</Button>
                     <Button onClick={() => setFilter("bonus")}>Получат премию</Button>
                     <Button onClick={() => setFilter("salary")}>ЗП больше 1000$</Button>
