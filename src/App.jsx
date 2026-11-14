@@ -34,10 +34,9 @@ export function App() {
         onRemove={handleRemove}
         onToggleBonus={handleToggleBonus}
         onTogglePromotion={handleTogglePromotion}
-
       />
       <AddWorker newUser={handleAdd} />
-      <Appeska/>
+      {/* <Appeska/> */}
     </div>
   );
 }
