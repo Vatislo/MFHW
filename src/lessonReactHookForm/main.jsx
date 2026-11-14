@@ -42,7 +42,7 @@ export function Appeska() {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset()
+    reset();
   };
 
   return (

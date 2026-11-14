@@ -17,7 +17,7 @@ const schema = z.object({
 
 export function AddWorker({ newUser }) {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: zodResolver(schema),
         mode: 'onChange',
     });
@@ -30,6 +30,7 @@ export function AddWorker({ newUser }) {
             bonus: false,
             promotion: false
         });
+        reset(); 
     };
 
     return (
@@ -46,7 +47,7 @@ export function AddWorker({ newUser }) {
                         placeholder="ЗП в долларах"
                     />
 
-                <Button type="submit">Добавить</Button>
+                <Button type="">Добавить</Button>
             </div>
         </form>
     )
